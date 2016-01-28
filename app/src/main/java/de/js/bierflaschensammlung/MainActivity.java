@@ -17,6 +17,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import de.js.bierflaschensammlung.config.Config;
 import de.js.bierflaschensammlung.json.JsonParser;
 
 public class MainActivity extends AppCompatActivity {
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     private class AsyncTaskParseJson extends AsyncTask<String, String, String> {
 
         final String TAG = "AsyncTaskParseJson";
-        private static final String URL = "http://192.168.0.201/bierbank/rest/get-beer-list-user.php";
+        private final String URL = Config.getRestUrl()+"get-beer-list-user.php";
 
         JSONArray dataJsonArr = null;
         JSONObject json = null;
