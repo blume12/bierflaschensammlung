@@ -1,16 +1,27 @@
 package de.js.bierflaschensammlung;
 
+import android.os.AsyncTask;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+
+import de.js.bierflaschensammlung.json.JsonParser;
 
 public class MainActivity extends AppCompatActivity {
+
+    private ArrayAdapter<String> listAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,14 +29,79 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        // load the listview for the beers
+        ListView beerList = (ListView) findViewById(R.id.beer_list);
+
+        // add a adapter for the List
+        listAdapter = new ArrayAdapter<String>(this, R.layout.row, new ArrayList<String>());
+        beerList.setAdapter(listAdapter);
+
+        //load the data from Rest-Api
+        new AsyncTaskParseJson().execute();
+
     }
+
+    private class AsyncTaskParseJson extends AsyncTask<String, String, String> {
+
+        final String TAG = "AsyncTaskParseJson";
+        private static final String URL = "http://192.168.0.201/bierbank/rest/get-beer-list-user.php";
+
+        JSONArray dataJsonArr = null;
+        JSONObject json = null;
+
+        @Override
+        protected void onPreExecute() {
+        }
+
+        @Override
+        protected String doInBackground(String... arg0) {
+
+            try {
+
+                // instantiate our json parser
+                JsonParser jParser = new JsonParser();
+
+                // get json string from url
+                json = jParser.getJSONFromUrl(URL);
+
+                Log.d(TAG, json.toString());
+                // get the array of the beers
+                int countBeers = json.getJSONArray("beers").length();
+                listAdapter.add(countBeers + " Biere");
+
+                dataJsonArr = json.getJSONArray("beer_kind");
+                // loop through all kinds of beers
+                for (int i = 0; i < dataJsonArr.length(); i++) {
+                    JSONObject c = dataJsonArr.getJSONObject(i);
+                    // Storing each json item in variable
+                    String beer_kind = c.getString("beer_kind");
+                    String count = c.getString("count");
+
+                    // show the values in our logcat
+                    Log.e(TAG, "beer_kind: " + beer_kind + ", count: " + count);
+                    // add to the listView
+                    listAdapter.add("      " + count + " " + beer_kind); // space for Kinds of Beers
+                }
+                listAdapter.notifyDataSetChanged();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String strFromDoInBg) {
+        }
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         ActionBar actionBar = getSupportActionBar();
-        if(actionBar != null) {
+        if (actionBar != null) {
             actionBar.setDisplayUseLogoEnabled(true);
         }
         return true;
