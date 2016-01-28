@@ -7,5 +7,27 @@
     <string name="action_logout">Abmelden</string>
     <string name="action_info">Info</string>
     <string name="action_search">Suche</string>
+    <string name="action_save">Speichern</string>
+    <string name="action_back">Zurück</string>
     <string name="button_search">Bier suchen</string>
+    <string name="title_activity_new_beer">Neues Bier hinzufügen</string>
+    <string name="label_name">Name:</string>
+    <string name="label_beer_company">Brauerei:</string>
+    <string name="label_beer_country">Herkunftsland:</string>
+    <string name="label_beer_per_mille">Alkoholgehalt:</string>
+    <string name="label_bottle_color">Farbe:</string>
+    <string name="label_bottle_size">Inhaltsmenge:</string>
+
+    <string name="bottle_color_prompt">Wähle eine Farbe</string>
+    <string-array name="bottle_color_array">
+        <item id="brown">braun</item>
+        <item id="green">grün</item>
+        <item id="blue">blau</item>
+    </string-array>
+
+    <string name="country_prompt">Wähle ein Land</string>
+    <string-array name="country_array">
+        <item id="1">Deutschland</item>
+        <item id="2">Österreich</item>
+    </string-array>
 </resources>

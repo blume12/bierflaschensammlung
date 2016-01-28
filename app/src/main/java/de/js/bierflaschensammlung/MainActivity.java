@@ -1,5 +1,6 @@
 package de.js.bierflaschensammlung;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
@@ -117,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_beer_new) {
+            startActivity( new Intent(this, NewBeerActivity.class));
             return true;
         }
 

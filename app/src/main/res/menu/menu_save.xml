@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
+    <item android:id="@+id/action_save" android:title="@string/action_save"
+        android:orderInCategory="100" app:showAsAction="always" android:icon="@android:drawable/ic_menu_save"/>
+    <item android:id="@+id/action_beer_new" android:title="@string/action_beer_new"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_contact" android:title="@string/action_contact"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_profile_edit" android:title="@string/action_profil_edit"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_help" android:title="@string/action_help"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_logout" android:title="@string/action_logout"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_info" android:title="@string/action_info"
+        android:orderInCategory="100" app:showAsAction="never" />
+</menu>

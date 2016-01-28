@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".MainActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".NewBeerActivity">
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="@string/label_name"
+            android:id="@+id/textViewBeerName"
+            android:textSize="16sp"
+            android:layout_alignParentTop="true"
+            android:layout_alignBottom="@+id/editTextBeerName"
+            android:layout_alignBaseline="@+id/editTextBeerName"/>
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/textViewBeerName"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/editTextBeerName"/>
+
+        <TextView
+            android:layout_width="120dp"
+            android:textSize="16sp"
+            android:layout_height="wrap_content"
+            android:text="@string/label_beer_company"
+            android:id="@+id/textViewBeerCompany"
+            android:layout_toLeftOf="@+id/editTextBeerName"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/editTextBeerCompany"
+            android:layout_alignBottom="@+id/editTextBeerCompany"
+            android:layout_alignBaseline="@+id/editTextBeerCompany"/>
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:inputType="text"
+            android:id="@+id/editTextBeerCompany"
+            android:layout_below="@+id/editTextBeerName"
+            android:layout_toRightOf="@+id/textViewBeerCompany"
+            android:layout_toEndOf="@+id/textViewBeerCompany" />
+
+        <TextView
+            android:layout_width="120dp"
+            android:textSize="16sp"
+            android:layout_height="wrap_content"
+            android:text="@string/label_beer_country"
+            android:id="@+id/textViewBeerCountry"
+            android:layout_below="@+id/editTextBeerCompany"
+            android:layout_toLeftOf="@+id/editTextBeerCompany"
+            android:layout_toStartOf="@+id/editTextBeerCompany"
+            android:layout_alignBottom="@+id/editTextBeerCountry"
+            android:layout_alignBaseline="@+id/editTextBeerCountry"/>
+        <Spinner
+            android:id="@+id/editTextBeerCountry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/country_array"
+            android:prompt="@string/country_prompt"
+            android:layout_below="@+id/editTextBeerCompany"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_toRightOf="@+id/textViewBeerCountry"
+            android:layout_toEndOf="@+id/textViewBeerCountry"  />
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="@string/label_beer_per_mille"
+            android:id="@+id/textViewPromille"
+            android:textSize="16sp"
+            android:layout_below="@+id/editTextBeerCountry"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignBaseline="@+id/editTextPromille"/>
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:inputType="text"
+            android:id="@+id/editTextPromille"
+            android:layout_below="@+id/editTextBeerCountry"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignLeft="@+id/editTextBeerCountry"
+            android:layout_alignStart="@+id/editTextBeerCountry" />
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="@string/label_bottle_color"
+            android:id="@+id/textViewBottleColor"
+            android:textSize="16sp"
+            android:layout_below="@+id/editTextPromille"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignBaseline="@+id/editViewBottleColor"/>
+        <Spinner
+            android:id="@+id/editViewBottleColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/bottle_color_array"
+            android:prompt="@string/bottle_color_prompt"
+            android:layout_below="@+id/editTextPromille"
+            android:layout_toRightOf="@+id/textViewBottleColor"
+            android:layout_toEndOf="@+id/textViewBottleColor" />
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="@string/label_bottle_size"
+            android:id="@+id/textViewBottleSize"
+            android:textSize="16sp"
+            android:layout_below="@+id/textViewBottleColor"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignBaseline="@+id/editViewBottleSize"/>
+
+        <EditText
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:inputType="numberDecimal"
+            android:id="@+id/editViewBottleSize"
+            android:layout_below="@+id/editViewBottleColor"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignLeft="@+id/editViewBottleColor"
+            android:layout_alignStart="@+id/editViewBottleColor" />
+
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>
