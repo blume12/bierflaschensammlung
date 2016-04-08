@@ -24,20 +24,25 @@
             android:name=".NewBeerActivity"
             android:label="@string/title_activity_new_beer"
             android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".SearchActivity" />
         </activity>
         <activity
             android:name=".SearchActivity"
             android:label="@string/title_activity_search"
             android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         </activity>
         <activity
             android:name=".InfoActivity"
             android:label="@string/title_activity_info"
             android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
-        <activity
-            android:name=".MenuMainActivity"
-            android:label="@string/title_activity_menu_main" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
         </activity>
     </application>
 

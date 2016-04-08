@@ -1,32 +1,19 @@
-package de.js.bierflaschensammlung;
+package de.js.bierflaschensammlung.menu;
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.app.Activity;
-import android.support.v7.app.ActionBar;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
+import android.util.Log;
 import android.view.MenuItem;
 
-abstract public class MenuMainActivity extends AppCompatActivity {
+import de.js.bierflaschensammlung.InfoActivity;
+import de.js.bierflaschensammlung.NewBeerActivity;
+import de.js.bierflaschensammlung.R;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+abstract public class MenuActivity extends AppCompatActivity {
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayUseLogoEnabled(true);
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
-        return true;
-    }
+    private final static String TAG = "MenuActivity";
 
     protected void addToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -41,14 +28,17 @@ abstract public class MenuMainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
+        Log.d(TAG, "id: " + item.getIcon());
         switch (id) {
             case R.id.action_beer_new:
                 startActivity(new Intent(this, NewBeerActivity.class));
                 return true;
 
-            case R.id.home:
+            case android.R.id.home:
                 //TODO: Back-Button
-                startActivity(new Intent(this, MainActivity.class));
+
+                Log.d(TAG, "Back button ");
+                NavUtils.navigateUpFromSameTask(this);
                 return true;
 
             case R.id.action_info:

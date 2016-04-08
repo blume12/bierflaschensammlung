@@ -1,8 +1,8 @@
 package de.js.bierflaschensammlung;
 
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 
+import de.js.bierflaschensammlung.menu.MenuMainActivity;
 
 public class InfoActivity extends MenuMainActivity {
 
@@ -12,7 +12,5 @@ public class InfoActivity extends MenuMainActivity {
         setContentView(R.layout.activity_info);
         addToolbar();
     }
-
-
 
 }

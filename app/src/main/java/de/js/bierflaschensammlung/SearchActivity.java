@@ -1,29 +1,21 @@
 package de.js.bierflaschensammlung;
 
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.app.Activity;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.sql.Array;
 import java.util.ArrayList;
 
 import de.js.bierflaschensammlung.config.Config;
 import de.js.bierflaschensammlung.json.JsonParser;
+import de.js.bierflaschensammlung.menu.MenuMainActivity;
 
 public class SearchActivity extends MenuMainActivity {
 
@@ -31,6 +23,7 @@ public class SearchActivity extends MenuMainActivity {
     private ListView resultList;
 
     private SearchActivity context = this;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,13 +83,13 @@ public class SearchActivity extends MenuMainActivity {
                 // get the array of the beers
                 dataJsonArr = json.getJSONArray("beer_kind");
                 // loop through all kinds of beers
-                Log.d(TAG, "TEST: "+dataJsonArr.toString());
+                Log.d(TAG, "TEST: " + dataJsonArr.toString());
                 for (int i = 0; i < dataJsonArr.length(); i++) {
                     JSONObject c = dataJsonArr.getJSONObject(i);
                     Log.d(TAG, c.toString());
                     // Storing each json item in variable
                     String beer_kind = c.getString("beer_kind");
-                   // String beer = c.getString("beer_name");
+                    // String beer = c.getString("beer_name");
                     String count = c.getString("count");
 
                     // show the values in our logcat

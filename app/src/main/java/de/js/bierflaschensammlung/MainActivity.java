@@ -4,11 +4,8 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -21,6 +18,7 @@ import java.util.ArrayList;
 
 import de.js.bierflaschensammlung.config.Config;
 import de.js.bierflaschensammlung.json.JsonParser;
+import de.js.bierflaschensammlung.menu.MenuMainActivity;
 
 public class MainActivity extends MenuMainActivity {
 
