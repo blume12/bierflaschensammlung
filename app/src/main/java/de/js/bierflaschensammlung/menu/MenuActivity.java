@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import de.js.bierflaschensammlung.InfoActivity;
 import de.js.bierflaschensammlung.NewBeerActivity;
 import de.js.bierflaschensammlung.R;
+import de.js.bierflaschensammlung.SearchActivity;
 
 abstract public class MenuActivity extends AppCompatActivity {
 
@@ -43,6 +44,10 @@ abstract public class MenuActivity extends AppCompatActivity {
 
             case R.id.action_info:
                 startActivity(new Intent(this, InfoActivity.class));
+                return true;
+
+            case R.id.action_search:
+                startActivity(new Intent(this, SearchActivity.class));
                 return true;
 
         }
