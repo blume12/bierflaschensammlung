@@ -43,6 +43,8 @@
         <item id="green">Hefeweizen</item>
     </string-array>
     <string name="title_activity_info">Informationen</string>
+    <string name="title_activity_contact">Kontakt</string>
     <string name="info_text">Viel Spaß mit der APP Bierkiste-XXL</string>
+    <string name="contact_text">Falls Fragen sind, einfach eine E-Mail an stern@bierkiste-xxl.de schreiben ;)</string>
     <string name="title_activity_menu_main">MenuMainActivity</string>
 </resources>

@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 
+import de.js.bierflaschensammlung.activity.ContactActivity;
 import de.js.bierflaschensammlung.activity.InfoActivity;
 import de.js.bierflaschensammlung.activity.NewBeerActivity;
 import de.js.bierflaschensammlung.R;
@@ -36,8 +37,6 @@ abstract public class MenuActivity extends AppCompatActivity {
                 return true;
 
             case android.R.id.home:
-                //TODO: Back-Button
-
                 Log.d(TAG, "Back button ");
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
@@ -48,6 +47,10 @@ abstract public class MenuActivity extends AppCompatActivity {
 
             case R.id.action_search:
                 startActivity(new Intent(this, SearchActivity.class));
+                return true;
+
+            case R.id.action_contact:
+                startActivity(new Intent(this, ContactActivity.class));
                 return true;
 
         }
