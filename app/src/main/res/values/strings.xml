@@ -15,6 +15,7 @@
     <string name="title_activity_new_beer">Neues Bier hinzufügen</string>
     <string name="label_name">Name:</string>
     <string name="label_beer_company">Brauerei:</string>
+    <string name="label_beer_kind">Bierart:</string>
     <string name="label_beer_country">Herkunftsland:</string>
     <string name="label_beer_per_mille">Alkoholgehalt:</string>
     <string name="label_bottle_color">Farbe:</string>
@@ -34,4 +35,11 @@
         <item id="2">Österreich</item>
     </string-array>
     <string name="title_activity_search">Suche</string>
+
+
+    <string name="beer_kind_prompt">Wähle eine Bierart</string>
+    <string-array name="beer_kind_array">
+        <item id="brown">Pils</item>
+        <item id="green">Hefeweizen</item>
+    </string-array>
 </resources>

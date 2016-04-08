@@ -163,5 +163,28 @@
             android:layout_alignLeft="@+id/editViewBottleColor"
             android:layout_alignStart="@+id/editViewBottleColor" />
 
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:text="@string/label_beer_kind"
+            android:id="@+id/textViewBeerKind"
+            android:textSize="16sp"
+            android:layout_below="@+id/editViewBeerKind"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignBaseline="@+id/editViewBeerKind"/>
+
+        <Spinner
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/beer_kind_array"
+            android:prompt="@string/beer_kind_prompt"
+            android:id="@+id/editViewBeerKind"
+            android:layout_below="@+id/editViewBottleSize"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignLeft="@+id/editViewBottleSize"
+            android:layout_alignStart="@+id/editViewBottleSize"/>
+
     </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>
