@@ -1,4 +1,4 @@
-package de.js.bierflaschensammlung;
+package de.js.bierflaschensammlung.activity;
 
 
 import android.os.Bundle;
@@ -11,8 +11,9 @@ import android.widget.Spinner;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import de.js.bierflaschensammlung.R;
 import de.js.bierflaschensammlung.json.JsonTransmitter;
-import de.js.bierflaschensammlung.menu.MenuSaveActivity;
+import de.js.bierflaschensammlung.activity.menu.MenuSaveActivity;
 
 public class NewBeerActivity extends MenuSaveActivity {
 

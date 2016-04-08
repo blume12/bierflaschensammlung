@@ -1,4 +1,4 @@
-package de.js.bierflaschensammlung;
+package de.js.bierflaschensammlung.activity;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -13,9 +13,10 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import de.js.bierflaschensammlung.R;
 import de.js.bierflaschensammlung.config.Config;
 import de.js.bierflaschensammlung.json.JsonParser;
-import de.js.bierflaschensammlung.menu.MenuMainActivity;
+import de.js.bierflaschensammlung.activity.menu.MenuMainActivity;
 
 public class SearchActivity extends MenuMainActivity {
 

@@ -1,32 +1,20 @@
-package de.js.bierflaschensammlung.menu;
+package de.js.bierflaschensammlung.activity.menu;
 
 import android.content.Intent;
 import android.support.v4.app.NavUtils;
-import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 
-import de.js.bierflaschensammlung.InfoActivity;
-import de.js.bierflaschensammlung.NewBeerActivity;
+import de.js.bierflaschensammlung.activity.InfoActivity;
+import de.js.bierflaschensammlung.activity.NewBeerActivity;
 import de.js.bierflaschensammlung.R;
+import de.js.bierflaschensammlung.activity.SearchActivity;
 
-abstract public class MenuSaveActivity extends MenuActivity {
+abstract public class MenuActivity extends AppCompatActivity {
 
-    private final static String TAG = "MenuSaveActivity";
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_save, menu);
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayUseLogoEnabled(true);
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
-        return true;
-    }
+    private final static String TAG = "MenuActivity";
 
     protected void addToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -48,12 +36,18 @@ abstract public class MenuSaveActivity extends MenuActivity {
                 return true;
 
             case android.R.id.home:
+                //TODO: Back-Button
+
                 Log.d(TAG, "Back button ");
                 NavUtils.navigateUpFromSameTask(this);
                 return true;
 
             case R.id.action_info:
                 startActivity(new Intent(this, InfoActivity.class));
+                return true;
+
+            case R.id.action_search:
+                startActivity(new Intent(this, SearchActivity.class));
                 return true;
 
         }

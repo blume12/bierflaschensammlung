@@ -1,8 +1,9 @@
-package de.js.bierflaschensammlung;
+package de.js.bierflaschensammlung.activity;
 
 import android.os.Bundle;
 
-import de.js.bierflaschensammlung.menu.MenuMainActivity;
+import de.js.bierflaschensammlung.R;
+import de.js.bierflaschensammlung.activity.menu.MenuMainActivity;
 
 public class InfoActivity extends MenuMainActivity {
 

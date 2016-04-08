@@ -1,8 +1,7 @@
-package de.js.bierflaschensammlung.menu;
+package de.js.bierflaschensammlung.activity.menu;
 
 import android.support.v7.app.ActionBar;
 import android.view.Menu;
-import android.view.MenuItem;
 
 import de.js.bierflaschensammlung.R;
 
