@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import de.js.bierflaschensammlung.config.Config;
 import de.js.bierflaschensammlung.json.JsonParser;
 
-public class SearchActivity extends AppCompatActivity {
+public class SearchActivity extends MenuMainActivity {
 
     private ArrayAdapter<String> listAdapter;
     private ListView resultList;
@@ -35,8 +35,7 @@ public class SearchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        addToolbar();
 
         Button sendSearch = (Button) findViewById(R.id.search_button);
 
@@ -62,41 +61,6 @@ public class SearchActivity extends AppCompatActivity {
                 });
             }
         });
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayUseLogoEnabled(true);
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        switch (id) {
-            case R.id.action_beer_new:
-                startActivity(new Intent(this, NewBeerActivity.class));
-                return true;
-
-            case R.id.home:
-                //TODO: Back-Button
-                startActivity(new Intent(this, MainActivity.class));
-                return true;
-
-        }
-
-        return super.onOptionsItemSelected(item);
     }
 
     private class AsyncTaskParseJson extends AsyncTask<String, String, String> {

@@ -42,4 +42,7 @@
         <item id="brown">Pils</item>
         <item id="green">Hefeweizen</item>
     </string-array>
+    <string name="title_activity_info">Informationen</string>
+    <string name="info_text">Viel Spaß mit der APP Bierkiste-XXL</string>
+    <string name="title_activity_menu_main">MenuMainActivity</string>
 </resources>

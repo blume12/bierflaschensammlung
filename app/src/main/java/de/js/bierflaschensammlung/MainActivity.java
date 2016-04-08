@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import de.js.bierflaschensammlung.config.Config;
 import de.js.bierflaschensammlung.json.JsonParser;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends MenuMainActivity {
 
     private ArrayAdapter<String> listAdapter;
 
@@ -30,8 +30,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        addToolbar();
 
         // load the listview for the beers
         ListView beerList = (ListView) findViewById(R.id.beer_list);
@@ -114,19 +113,4 @@ public class MainActivity extends AppCompatActivity {
         startActivity( new Intent(this, SearchActivity.class));
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_beer_new) {
-            startActivity( new Intent(this, NewBeerActivity.class));
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

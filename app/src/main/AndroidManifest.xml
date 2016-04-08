@@ -30,6 +30,15 @@
             android:label="@string/title_activity_search"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
+        <activity
+            android:name=".InfoActivity"
+            android:label="@string/title_activity_info"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".MenuMainActivity"
+            android:label="@string/title_activity_menu_main" >
+        </activity>
     </application>
 
 </manifest>
