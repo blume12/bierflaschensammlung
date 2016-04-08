@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -107,6 +108,10 @@ public class MainActivity extends AppCompatActivity {
             actionBar.setDisplayUseLogoEnabled(true);
         }
         return true;
+    }
+
+    public void startSearchActivity(View view) {
+        startActivity( new Intent(this, SearchActivity.class));
     }
 
     @Override
