@@ -46,13 +46,9 @@ public class SearchActivity extends MenuMainActivity {
             @Override
             public void onClick(View v) {
                 //load the data from Rest-Api
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
 
                         new AsyncTaskParseJson().execute();
-                    }
-                });
+
             }
         });
     }
@@ -73,33 +69,15 @@ public class SearchActivity extends MenuMainActivity {
         protected String doInBackground(String... arg0) {
 
             try {
-
                 // instantiate our json parser
                 JsonParser jParser = new JsonParser();
-                listAdapter.clear();
                 // get json string from url
                 json = jParser.getJSONFromUrl(URL);
-
-                Log.d(TAG, json.toString());
-                // get the array of the beers
-                dataJsonArr = json.getJSONArray("beer_kind");
-                // loop through all kinds of beers
-                Log.d(TAG, "TEST: " + dataJsonArr.toString());
-                for (int i = 0; i < dataJsonArr.length(); i++) {
-                    JSONObject c = dataJsonArr.getJSONObject(i);
-                    Log.d(TAG, c.toString());
-                    // Storing each json item in variable
-                    String beer_kind = c.getString("beer_kind");
-                    // String beer = c.getString("beer_name");
-                    String count = c.getString("count");
-
-                    // show the values in our logcat
-                    Log.d(TAG, "beer_kind: " + beer_kind + ", count: " + count);
-                    // add to the listView
-                    listAdapter.add("" + count + " " + beer_kind); // space for Kinds of Beers
+                if (json != null) {
+                    Log.d(TAG, json.toString());
+                    // get the array of the beers
+                    dataJsonArr = json.getJSONArray("beer_kind");
                 }
-                listAdapter.setNotifyOnChange(true);
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -109,7 +87,31 @@ public class SearchActivity extends MenuMainActivity {
         @Override
         protected void onPostExecute(String strFromDoInBg) {
             Log.d(TAG, "onPostExecute");
-            listAdapter.notifyDataSetChanged();
+
+            try {
+                if (dataJsonArr != null) {
+                    listAdapter.clear();
+                    // loop through all kinds of beers
+                    Log.d(TAG, "TEST: " + dataJsonArr.toString());
+                    for (int i = 0; i < dataJsonArr.length(); i++) {
+                        JSONObject c = dataJsonArr.getJSONObject(i);
+                        Log.d(TAG, c.toString());
+                        // Storing each json item in variable
+                        String beer_kind = c.getString("beer_kind");
+                        // String beer = c.getString("beer_name");
+                        String count = c.getString("count");
+
+                        // show the values in our logcat
+                        Log.d(TAG, "beer_kind: " + beer_kind + ", count: " + count);
+                        // add to the listView
+                        listAdapter.add("" + count + " " + beer_kind); // space for Kinds of Beers
+                    }
+                    listAdapter.setNotifyOnChange(true);
+                    listAdapter.notifyDataSetChanged();
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
