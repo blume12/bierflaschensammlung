@@ -21,6 +21,9 @@
     <string name="label_bottle_color">Farbe:</string>
     <string name="label_bottle_size">Inhaltsmenge:</string>
     <string name="label_result">Ergebnisse:</string>
+    <string name="label_no_result">Leider kein passendes Bier gefunden.</string>
+    <string name="text_own_result">eigene Sammlung</string>
+    <string name="text_other_result">allgemeine Sammlung</string>
 
     <string name="bottle_color_prompt">Wähle eine Farbe</string>
     <string-array name="bottle_color_array">

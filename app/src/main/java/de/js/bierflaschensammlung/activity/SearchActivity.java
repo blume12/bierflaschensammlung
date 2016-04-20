@@ -4,9 +4,12 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -22,8 +25,10 @@ public class SearchActivity extends MenuMainActivity {
 
     private ArrayAdapter<String> listAdapter;
     private ListView resultList;
+    private TextView noResultView;
+    private static String TAG = "SearchActivity";
 
-    private SearchActivity context = this;
+    private String searchValue = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,20 +40,21 @@ public class SearchActivity extends MenuMainActivity {
 
         // load the listview for the beers
         resultList = (ListView) findViewById(R.id.result_list);
+        noResultView = (TextView) findViewById(R.id.text_no_result);
 
         // add a adapter for the List
         listAdapter = new ArrayAdapter<String>(this, R.layout.row, new ArrayList<String>());
 
         resultList.setAdapter(listAdapter);
 
-
         sendSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //load the data from Rest-Api
-
-                        new AsyncTaskParseJson().execute();
-
+                EditText searchRequest = (EditText) findViewById(R.id.searchText);
+                searchValue = searchRequest.getText().toString();
+                Log.d(TAG, "SearchValue: " + searchValue);
+                new AsyncTaskParseJson().execute();
             }
         });
     }
@@ -56,18 +62,14 @@ public class SearchActivity extends MenuMainActivity {
     private class AsyncTaskParseJson extends AsyncTask<String, String, String> {
 
         final String TAG = "AsyncTaskParseJson";
-        private final String URL = Config.getRestUrl() + "get-beer-list-user.php";
+        private final String URL = Config.getRestUrl() + "get-beer-list.php?searchValue=" + searchValue;
 
-        JSONArray dataJsonArr = null;
+        JSONArray beersOwnJsonArr = null;
+        JSONArray beersOtherJsonArr = null;
         JSONObject json = null;
 
         @Override
-        protected void onPreExecute() {
-        }
-
-        @Override
         protected String doInBackground(String... arg0) {
-
             try {
                 // instantiate our json parser
                 JsonParser jParser = new JsonParser();
@@ -76,7 +78,8 @@ public class SearchActivity extends MenuMainActivity {
                 if (json != null) {
                     Log.d(TAG, json.toString());
                     // get the array of the beers
-                    dataJsonArr = json.getJSONArray("beer_kind");
+                    beersOwnJsonArr = json.getJSONArray("beers_own");
+                    beersOtherJsonArr = json.getJSONArray("beers_other");
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -88,23 +91,39 @@ public class SearchActivity extends MenuMainActivity {
         protected void onPostExecute(String strFromDoInBg) {
             Log.d(TAG, "onPostExecute");
 
+            if (beersOwnJsonArr != null) {
+                listAdapter.clear();
+                if (beersOwnJsonArr.length() <= 0) {
+                    resultList.setVisibility(View.INVISIBLE);
+                    noResultView.setVisibility(View.VISIBLE);
+                } else {
+                    resultList.setVisibility(View.VISIBLE);
+                    noResultView.setVisibility(View.INVISIBLE);
+                }
+
+                addItemsToList(beersOwnJsonArr, R.string.text_own_result);
+                addItemsToList(beersOtherJsonArr, R.string.text_other_result);
+            }
+        }
+
+        private void addItemsToList(JSONArray dataJsonArray, int textReference) {
             try {
-                if (dataJsonArr != null) {
-                    listAdapter.clear();
+                if (dataJsonArray != null) {
                     // loop through all kinds of beers
-                    Log.d(TAG, "TEST: " + dataJsonArr.toString());
-                    for (int i = 0; i < dataJsonArr.length(); i++) {
-                        JSONObject c = dataJsonArr.getJSONObject(i);
+                    Log.d(TAG, "Data: " + dataJsonArray.toString());
+                    listAdapter.add(getString(textReference));
+
+
+                    for (int i = 0; i < dataJsonArray.length(); i++) {
+                        JSONObject c = dataJsonArray.getJSONObject(i);
                         Log.d(TAG, c.toString());
                         // Storing each json item in variable
-                        String beer_kind = c.getString("beer_kind");
-                        // String beer = c.getString("beer_name");
-                        String count = c.getString("count");
+                        String beer = c.getString("beer_name");
 
                         // show the values in our logcat
-                        Log.d(TAG, "beer_kind: " + beer_kind + ", count: " + count);
+                        Log.d(TAG, "beer_name: " + beer);
                         // add to the listView
-                        listAdapter.add("" + count + " " + beer_kind); // space for Kinds of Beers
+                        listAdapter.add(beer); // space for Kinds of Beers
                     }
                     listAdapter.setNotifyOnChange(true);
                     listAdapter.notifyDataSetChanged();

@@ -34,38 +34,51 @@
         tools:context=".SearchActivity">
 
         <EditText
+            android:id="@+id/searchText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/editText"
-            android:layout_toLeftOf="@+id/search_button"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:hint="@string/search_example"/>
+            android:layout_toLeftOf="@+id/search_button"
+            android:hint="@string/search_example" />
+
         <Button
+            android:id="@+id/search_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/action_search_verb"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:id="@+id/search_button" />
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:text="@string/action_search_verb" />
 
         <TextView
+            android:id="@+id/text_result_headline"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/label_result"
-            android:id="@+id/textView"
-            android:layout_below="@+id/editText"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
+            android:layout_below="@+id/searchText"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:text="@string/label_result" />
+
         <ListView
             android:id="@+id/result_list"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:layout_below="@+id/textView">
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_result_headline">
 
         </ListView>
+
+        <TextView
+            android:id="@+id/text_no_result"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_result_headline"
+            android:text="@string/label_no_result"
+            android:visibility="invisible">
+
+        </TextView>
+
 
     </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>
